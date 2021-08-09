@@ -37,13 +37,20 @@ class LanguageGame
             self::resetEverything();
             echo "<script type='text/javascript'> document.getElementById('word').value = '{$this->word}';</script>";
         }
-        else if($_SERVER['REQUEST_METHOD'] == 'POST')
+        else if(isset($_POST['answer']))
         {
             $verify = new Word();
             $verify->verify($_SESSION['answer'], $_SESSION['guess']);
             self::resetEverything();
             unset($_SESSION['guess']);
             echo "<script type='text/javascript'> document.getElementById('word').value = '{$_SESSION['word']}'; </script>"; 
+        }
+        else if(isset($_POST['resetScore']))
+        {
+            $_SESSION['win'] = 0;
+            $_SESSION['loss'] = 0;
+            echo "<script>document.getElementById('score').innerHTML = 'Score: {$_SESSION['win']}/{$_SESSION['loss']}'</script>";
+            self::resetEverything();
         }
     }
     
