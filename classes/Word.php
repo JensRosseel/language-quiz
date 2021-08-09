@@ -2,11 +2,16 @@
 
 class Word
 {
-    // TODO: add word (FR) and answer (EN) - (via constructor or not? why?)
-
-    public function verify(string $answer)
+    public function verify(string $answer, string $guess)
     {
-        // TODO: use this function to verify if the provided answer by the user matches the correct one
+        if($guess == $answer)
+        {
+            echo "<script> alert('Your guess is correct!!!'); </script>";
+        }
+        else
+        {
+            echo "<script> alert('Your guess is NOT correct!!!'); </script>";
+        }
         // Bonus: allow answers with different casing (example: both bread or Bread can be correct answers, even though technically it's a different string)
         // Bonus (hard): can you allow answers with small typo's (max one character different)?
     }

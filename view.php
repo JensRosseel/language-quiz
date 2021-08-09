@@ -8,6 +8,12 @@
 	<title>Game</title>
 </head>
 <body>
-	<!-- TODO: add a form for the user to play the game -->
+	<form action="" method="post">
+		<label for="word">Word</label>
+		<input type="text" name="word" id="word" readonly>
+		<label for="guess">Guess</label>
+		<input type="text" name="guess" id="guess" required>
+		<input type="submit" value="Answer">
+	</form>
 </body>
 </html>
