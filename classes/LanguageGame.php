@@ -43,7 +43,7 @@ class LanguageGame
             $verify->verify($_SESSION['answer'], $_SESSION['guess']);
             self::resetEverything();
             unset($_SESSION['guess']);
-            echo "<script type='text/javascript'> document.getElementById('word').value = '{$_SESSION['word']}'; </script>";
+            echo "<script type='text/javascript'> document.getElementById('word').value = '{$_SESSION['word']}'; </script>"; 
         }
     }
     
