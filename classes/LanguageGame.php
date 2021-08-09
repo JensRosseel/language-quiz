@@ -41,13 +41,10 @@ class LanguageGame
             unset($_SESSION['guess']);
             echo "<script type='text/javascript'> document.getElementById('word').value = '{$_SESSION['word']}'; </script>"; 
         }
-        else if(isset($_POST['resetScore']) && empty($_SESSION['guess']))
+        else if(isset($_POST['resetScore']))
         {
-            $_SESSION['win'] = 0;
-            $_SESSION['loss'] = 0;
-            echo "<script>document.getElementById('score').innerHTML = 'Score: {$_SESSION['win']}/{$_SESSION['loss']}'</script>";
-            self::resetEverything();
-            unset($_SESSION['guess']);
+            session_destroy();
+            header("Refresh:0");
         }
         else if(empty($_SESSION['guess']))
         {  
