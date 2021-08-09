@@ -15,5 +15,6 @@
 		<input type="text" name="guess" id="guess" required>
 		<input type="submit" value="Answer">
 	</form>
+	<p id="score">Score: 0</p>
 </body>
 </html>
