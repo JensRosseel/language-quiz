@@ -5,6 +5,7 @@ session_start();
 
 $_SESSION['win'];
 $_SESSION['loss'];
+$_SESSION['guess'];
 
 require_once 'classes/Data.php';
 require_once 'classes/LanguageGame.php';

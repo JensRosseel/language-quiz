@@ -28,16 +28,12 @@ class LanguageGame
     }
     public function run()
     {
-        if(isset($_POST['guess']))
+        if(isset($_POST['guess']) && $_POST['guess'] !== "")
         {
             $_SESSION['guess'] = $_POST['guess'];
         }
-        if(empty($_SESSION['guess']))
-        {  
-            self::resetEverything();
-            echo "<script type='text/javascript'> document.getElementById('word').value = '{$this->word}';</script>";
-        }
-        else if(isset($_POST['answer']))
+        
+        if(isset($_POST['answer']) && !empty($_SESSION['guess']))
         {
             $verify = new Word();
             $verify->verify($_SESSION['answer'], $_SESSION['guess']);
@@ -45,12 +41,18 @@ class LanguageGame
             unset($_SESSION['guess']);
             echo "<script type='text/javascript'> document.getElementById('word').value = '{$_SESSION['word']}'; </script>"; 
         }
-        else if(isset($_POST['resetScore']))
+        else if(isset($_POST['resetScore']) && empty($_SESSION['guess']))
         {
             $_SESSION['win'] = 0;
             $_SESSION['loss'] = 0;
             echo "<script>document.getElementById('score').innerHTML = 'Score: {$_SESSION['win']}/{$_SESSION['loss']}'</script>";
             self::resetEverything();
+            unset($_SESSION['guess']);
+        }
+        else if(empty($_SESSION['guess']))
+        {  
+            self::resetEverything();
+            echo "<script type='text/javascript'> document.getElementById('word').value = '{$this->word}';</script>";
         }
     }
     
